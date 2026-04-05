@@ -55,7 +55,8 @@ def check_priority(result: dict, expected: dict) -> bool:
     for tc in result.get("tool_calls", []):
         if tc["name"] == "create_task":
             return tc["params"].get("priority") in expected["allowed_priorities"]
-    return True
+    # create_task not called but priorities expected — fail
+    return False
 
 
 def check_tool_sequence(result: dict, expected: dict) -> bool:
@@ -102,18 +103,20 @@ def classify_error(result: dict, expected: dict) -> str | None:
     if expected["expect_no_create_task"] and "create_task" in actual:
         return "E"
 
-    # A — didn't call tool at all
+    # A — didn't call tool at all (or missing expected tools)
     if expected_seq and not actual:
         return "A"
-
-    # B — wrong tool
-    if actual and expected_seq:
-        actual_set = set(actual)
+    if expected_seq and actual:
         expected_set = set(expected_seq)
+        actual_set = set(actual)
+        # Missing expected tools (called some but not all)
+        if expected_set - actual_set:
+            return "A"
+        # Called tools not in expected set
         if actual_set - expected_set:
             return "B"
 
-    # D — wrong order
+    # D — wrong order or count
     if actual and expected_seq and actual != expected_seq:
         return "D"
 
