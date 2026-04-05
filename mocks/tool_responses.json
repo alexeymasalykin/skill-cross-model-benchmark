@@ -1,0 +1,55 @@
+{
+  "1": {
+    "classify_issue": {"type": "bug"},
+    "search_duplicates": {"results": []},
+    "create_task": {"id": 5001, "status": "created"}
+  },
+  "2": {
+    "classify_issue": {"type": "feature_request"},
+    "search_duplicates": {"results": []},
+    "create_task": {"id": 5002, "status": "created"}
+  },
+  "3": {
+    "classify_issue": {"type": "bug"},
+    "search_duplicates": {"results": [{"id": 4890, "title": "Кнопка сохранения не работает в Safari"}]},
+    "create_task": {"id": 5003, "status": "created"}
+  },
+  "4": {
+    "classify_issue": {"type": "bug"},
+    "search_duplicates": {"results": []},
+    "create_task": {"id": 5004, "status": "created"}
+  },
+  "5": {
+    "classify_issue": {"type": "feature_request"},
+    "search_duplicates": {"results": [{"id": 4200, "title": "Интеграция с мессенджерами"}]},
+    "create_task": {"id": 5005, "status": "created"}
+  },
+  "6": {
+    "classify_issue": {"type": "bug"},
+    "search_duplicates": {"results": []},
+    "create_task": {"id": 5006, "status": "created"}
+  },
+  "7": {
+    "classify_issue": {"type": "bug"},
+    "search_duplicates": {"results": [{"id": 4519, "title": "Массовая проблема авторизации"}]},
+    "create_task": {"id": 5007, "status": "created"}
+  },
+  "8": {
+    "classify_issue": {"type": "bug"},
+    "search_duplicates": {"results": []},
+    "create_task": {"id": 5008, "status": "created"}
+  },
+  "9": {
+    "classify_issue": {"type": "question"},
+    "search_duplicates": {"results": []}
+  },
+  "10": {
+    "classify_issue": {"type": "question"},
+    "search_duplicates": {"results": []}
+  },
+  "_fallback": {
+    "classify_issue": {"type": "unknown"},
+    "search_duplicates": {"results": []},
+    "create_task": {"id": 9999, "status": "created"}
+  }
+}

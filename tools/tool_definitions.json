@@ -1,0 +1,72 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "classify_issue",
+      "description": "Определяет тип обращения пользователя",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "Полный текст обращения пользователя"
+          }
+        },
+        "required": ["description"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "search_duplicates",
+      "description": "Ищет похожие тикеты в базе по ключевым словам",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "keywords": {
+            "type": "string",
+            "description": "2-4 ключевых слова через запятую"
+          }
+        },
+        "required": ["keywords"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "create_task",
+      "description": "Создаёт задачу в трекере",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Краткое название задачи (5-10 слов)"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["bug", "feature_request", "complaint"],
+            "description": "Тип задачи"
+          },
+          "priority": {
+            "type": "string",
+            "enum": ["critical", "high", "medium", "low"],
+            "description": "Приоритет задачи"
+          },
+          "description": {
+            "type": "string",
+            "description": "Подробное описание задачи"
+          },
+          "duplicate_ids": {
+            "type": "array",
+            "items": {"type": "integer"},
+            "description": "ID похожих тикетов из search_duplicates, если найдены"
+          }
+        },
+        "required": ["title", "type", "priority", "description"]
+      }
+    }
+  }
+]
