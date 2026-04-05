@@ -24,9 +24,9 @@ RESULTS_DIR.mkdir(exist_ok=True)
 
 MODELS = [
     "anthropic/claude-sonnet-4-6",
-    "openai/gpt-4o",
+    "openai/gpt-4.1",
     "google/gemini-2.5-pro",
-    "deepseek/deepseek-chat",
+    "deepseek/deepseek-chat-v3-0324",
 ]
 
 MAX_TOOL_CYCLES = 10

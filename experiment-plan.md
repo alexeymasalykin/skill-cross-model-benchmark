@@ -339,10 +339,10 @@ description: >
 
 | # | Модель | OpenRouter model ID | Цена (input/M) |
 |---|--------|---------------------|-----------------|
-| 1 | Claude Sonnet 4.6 | anthropic/claude-sonnet-4.6 | ~$3 |
-| 2 | GPT-4o | openai/gpt-4o | ~$2.5 |
-| 3 | Gemini 2.5 Pro | google/gemini-2.5-pro | ~$2.5 |
-| 4 | DeepSeek V3 | deepseek/deepseek-chat | ~$0.55 |
+| 1 | Claude Sonnet 4.6 | anthropic/claude-sonnet-4-6 | ~$3 |
+| 2 | GPT-4.1 | openai/gpt-4.1 | ~$2 |
+| 3 | Gemini 2.5 Pro | google/gemini-2.5-pro | ~$2.50 |
+| 4 | DeepSeek V3.2 | deepseek/deepseek-chat-v3-0324 | ~$0.25-0.55 |
 
 Параметры для всех одинаковые:
 - `temperature: 0`

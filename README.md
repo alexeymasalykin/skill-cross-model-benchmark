@@ -13,9 +13,9 @@
 | Модель | OpenRouter ID |
 |--------|--------------|
 | Claude Sonnet 4.6 | `anthropic/claude-sonnet-4-6` |
-| GPT-4o | `openai/gpt-4o` |
+| GPT-4.1 | `openai/gpt-4.1` |
 | Gemini 2.5 Pro | `google/gemini-2.5-pro` |
-| DeepSeek V3 | `deepseek/deepseek-chat` |
+| DeepSeek V3.2 | `deepseek/deepseek-chat-v3-0324` |
 
 ## Быстрый старт
 
