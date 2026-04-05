@@ -19,8 +19,8 @@ from openai import OpenAI
 load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-RESULTS_DIR = BASE_DIR / "results"
-RESULTS_DIR.mkdir(exist_ok=True)
+RESULTS_DIR = BASE_DIR / "results" / "raw"
+RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
 MODELS = [
     "anthropic/claude-sonnet-4-6",
@@ -162,6 +162,14 @@ def main() -> None:
         "--repeats-override", type=int, default=None,
         help="Override repeat count for all cases",
     )
+    parser.add_argument(
+        "--system-prompt", type=str, default=None,
+        help="Custom system prompt (overrides SKILL.md)",
+    )
+    parser.add_argument(
+        "--mode-label", type=str, default=None,
+        help="Label for this run (used in filename, e.g. 'simple_prompt')",
+    )
     args = parser.parse_args()
 
     api_key = os.getenv("OPENROUTER_API_KEY")
@@ -175,8 +183,13 @@ def main() -> None:
     )
 
     # Load data
-    skill_path = BASE_DIR / "SKILL.md"
-    skill_content = skill_path.read_text(encoding="utf-8") if not args.baseline else ""
+    skill_path = BASE_DIR / "skill" / "SKILL.md"
+    if args.system_prompt:
+        skill_content = args.system_prompt
+    elif args.baseline:
+        skill_content = ""
+    else:
+        skill_content = skill_path.read_text(encoding="utf-8")
     tools = load_json(BASE_DIR / "tools" / "tool_definitions.json")
     mocks = load_json(BASE_DIR / "mocks" / "tool_responses.json")
     test_cases = load_json(BASE_DIR / "tests" / "test_cases.json")
@@ -188,7 +201,14 @@ def main() -> None:
         test_cases = [tc for tc in test_cases if tc["id"] in case_ids]
 
     # Metadata
-    mode = "baseline" if args.baseline else "with_skill"
+    if args.mode_label:
+        mode = args.mode_label
+    elif args.baseline:
+        mode = "baseline"
+    elif args.system_prompt:
+        mode = "custom_prompt"
+    else:
+        mode = "with_skill"
     run_id = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S") + f"_{mode}"
     metadata = {
         "run_id": run_id,

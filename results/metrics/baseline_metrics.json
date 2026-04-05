@@ -1,0 +1,98 @@
+{
+  "claude-sonnet-4-6": {
+    "success_rate_total": 75.0,
+    "success_rate_L1": 100.0,
+    "success_rate_L2": 100.0,
+    "success_rate_L3": 100.0,
+    "restraint_L4": 100.0,
+    "tool_sequence_accuracy": 75.0,
+    "classification_accuracy": 75.0,
+    "priority_accuracy": 100.0,
+    "duplicate_handling": 100.0,
+    "multi_issue_detection": 0.0,
+    "consistency": 100.0,
+    "avg_latency_ms": 13569,
+    "error_distribution": {
+      "A": 5,
+      "B": 0,
+      "C": 0,
+      "D": 0,
+      "E": 0,
+      "F": 0
+    },
+    "total_runs": 20,
+    "total_errors": 5
+  },
+  "gpt-4.1": {
+    "success_rate_total": 55.0,
+    "success_rate_L1": 100.0,
+    "success_rate_L2": 20.0,
+    "success_rate_L3": 100.0,
+    "restraint_L4": 100.0,
+    "tool_sequence_accuracy": 75.0,
+    "classification_accuracy": 75.0,
+    "priority_accuracy": 80.0,
+    "duplicate_handling": 100.0,
+    "multi_issue_detection": 0.0,
+    "consistency": 95.0,
+    "avg_latency_ms": 3590,
+    "error_distribution": {
+      "A": 5,
+      "B": 0,
+      "C": 4,
+      "D": 0,
+      "E": 0,
+      "F": 0
+    },
+    "total_runs": 20,
+    "total_errors": 9
+  },
+  "gemini-2.5-pro": {
+    "success_rate_total": 15.0,
+    "success_rate_L1": 40.0,
+    "success_rate_L2": 20.0,
+    "success_rate_L3": 0.0,
+    "restraint_L4": 100.0,
+    "tool_sequence_accuracy": 20.0,
+    "classification_accuracy": 60.0,
+    "priority_accuracy": 70.0,
+    "duplicate_handling": 60.0,
+    "multi_issue_detection": 0.0,
+    "consistency": 85.0,
+    "avg_latency_ms": 14268,
+    "error_distribution": {
+      "A": 14,
+      "B": 0,
+      "C": 1,
+      "D": 2,
+      "E": 0,
+      "F": 0
+    },
+    "total_runs": 20,
+    "total_errors": 17
+  },
+  "deepseek-chat-v3-0324": {
+    "success_rate_total": 5.0,
+    "success_rate_L1": 0.0,
+    "success_rate_L2": 0.0,
+    "success_rate_L3": 20.0,
+    "restraint_L4": 100.0,
+    "tool_sequence_accuracy": 20.0,
+    "classification_accuracy": 75.0,
+    "priority_accuracy": 35.0,
+    "duplicate_handling": 20.0,
+    "multi_issue_detection": 0.0,
+    "consistency": 95.0,
+    "avg_latency_ms": 10063,
+    "error_distribution": {
+      "A": 15,
+      "B": 0,
+      "C": 3,
+      "D": 1,
+      "E": 0,
+      "F": 0
+    },
+    "total_runs": 20,
+    "total_errors": 19
+  }
+}

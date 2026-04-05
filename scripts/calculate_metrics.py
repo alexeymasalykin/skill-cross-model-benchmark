@@ -1,7 +1,7 @@
 """
-Skill Benchmark Analyzer
+Skill Benchmark Metrics Calculator
 Анализирует результаты прогона, считает метрики, генерирует таблицы и графики.
-Использование: python scripts/analyze_results.py results/<run_id>.json [--compare results/<baseline>.json]
+Использование: python scripts/calculate_metrics.py results/raw/<file>.json
 """
 
 import json
@@ -15,8 +15,10 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-ANALYSIS_DIR = BASE_DIR / "analysis"
-ANALYSIS_DIR.mkdir(exist_ok=True)
+CHARTS_DIR = BASE_DIR / "charts"
+CHARTS_DIR.mkdir(exist_ok=True)
+METRICS_DIR = BASE_DIR / "results" / "metrics"
+METRICS_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def load_json(path: Path) -> dict:
@@ -347,7 +349,7 @@ def generate_heatmap(results: list[dict], test_cases: dict[int, dict]) -> None:
     plt.colorbar(im, ax=ax, label="Success Rate")
     ax.set_title("Model × Test Case Success Rate")
     plt.tight_layout()
-    plt.savefig(ANALYSIS_DIR / "heatmap.png", dpi=150)
+    plt.savefig(CHARTS_DIR / "heatmap.png", dpi=150)
     plt.close()
     print(f"Saved: {ANALYSIS_DIR / 'heatmap.png'}")
 
@@ -376,7 +378,7 @@ def generate_bar_chart(metrics: dict) -> None:
     ax.yaxis.set_major_formatter(mticker.PercentFormatter())
     ax.set_ylim(0, 105)
     plt.tight_layout()
-    plt.savefig(ANALYSIS_DIR / "success_by_level.png", dpi=150)
+    plt.savefig(CHARTS_DIR / "success_by_level.png", dpi=150)
     plt.close()
     print(f"Saved: {ANALYSIS_DIR / 'success_by_level.png'}")
 
@@ -409,14 +411,14 @@ def generate_error_pies(metrics: dict) -> None:
 
     plt.suptitle("Error Distribution by Model")
     plt.tight_layout()
-    plt.savefig(ANALYSIS_DIR / "error_distribution.png", dpi=150)
+    plt.savefig(CHARTS_DIR / "error_distribution.png", dpi=150)
     plt.close()
     print(f"Saved: {ANALYSIS_DIR / 'error_distribution.png'}")
 
 
 def save_metrics_json(metrics: dict, run_id: str) -> None:
     """Save metrics as JSON for further analysis."""
-    path = ANALYSIS_DIR / f"metrics_{run_id}.json"
+    path = METRICS_DIR / f"metrics_{run_id}.json"
     with open(path, "w", encoding="utf-8") as f:
         json.dump(metrics, f, ensure_ascii=False, indent=2)
     print(f"Saved: {path}")
@@ -424,7 +426,7 @@ def save_metrics_json(metrics: dict, run_id: str) -> None:
 
 def main() -> None:
     if len(sys.argv) < 2:
-        print("Usage: python scripts/analyze_results.py results/<run_id>.json")
+        print("Usage: python scripts/calculate_metrics.py results/raw/<file>.json")
         sys.exit(1)
 
     results_path = Path(sys.argv[1])

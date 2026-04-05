@@ -1,6 +1,5 @@
 .env
-results/
-analysis/
 __pycache__/
 *.pyc
 .venv/
+analysis/
