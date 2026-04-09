@@ -1,0 +1,26 @@
+{
+  "gpt-5.1": {
+    "success_rate_total": 75.0,
+    "success_rate_L1": 100.0,
+    "success_rate_L2": 100.0,
+    "success_rate_L3": 100.0,
+    "restraint_L4": 100.0,
+    "tool_sequence_accuracy": 75.0,
+    "classification_accuracy": 100.0,
+    "priority_accuracy": 100.0,
+    "duplicate_handling": 100.0,
+    "multi_issue_detection": 0.0,
+    "consistency": 100.0,
+    "avg_latency_ms": 6227,
+    "error_distribution": {
+      "A": 20,
+      "B": 0,
+      "C": 0,
+      "D": 0,
+      "E": 0,
+      "F": 0
+    },
+    "total_runs": 80,
+    "total_errors": 20
+  }
+}

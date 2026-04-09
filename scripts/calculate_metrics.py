@@ -351,7 +351,7 @@ def generate_heatmap(results: list[dict], test_cases: dict[int, dict]) -> None:
     plt.tight_layout()
     plt.savefig(CHARTS_DIR / "heatmap.png", dpi=150)
     plt.close()
-    print(f"Saved: {ANALYSIS_DIR / 'heatmap.png'}")
+    print(f"Saved: {CHARTS_DIR / 'heatmap.png'}")
 
 
 def generate_bar_chart(metrics: dict) -> None:
@@ -380,7 +380,7 @@ def generate_bar_chart(metrics: dict) -> None:
     plt.tight_layout()
     plt.savefig(CHARTS_DIR / "success_by_level.png", dpi=150)
     plt.close()
-    print(f"Saved: {ANALYSIS_DIR / 'success_by_level.png'}")
+    print(f"Saved: {CHARTS_DIR / 'success_by_level.png'}")
 
 
 def generate_error_pies(metrics: dict) -> None:
@@ -413,7 +413,7 @@ def generate_error_pies(metrics: dict) -> None:
     plt.tight_layout()
     plt.savefig(CHARTS_DIR / "error_distribution.png", dpi=150)
     plt.close()
-    print(f"Saved: {ANALYSIS_DIR / 'error_distribution.png'}")
+    print(f"Saved: {CHARTS_DIR / 'error_distribution.png'}")
 
 
 def save_metrics_json(metrics: dict, run_id: str) -> None:
